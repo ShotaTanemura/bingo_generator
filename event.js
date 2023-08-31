@@ -1,5 +1,5 @@
 const features = Array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J");
-const colors = Array("red", "blue", "green", "yellow", "white");
+const colors = Array({"color": "red", "time": 0}, {"color": "blue", "time": 0}, {"color": "yellow", "time": 0}, {"color": "green", "time": 0}, {"color": "white", "time": 0});
 const imagePath = "images/hand_good.png";
 
 function setColor() {
@@ -7,8 +7,30 @@ function setColor() {
 	var cols = document.getElementsByClassName('col');
 	
 	forEach.call(cols, function (col) {
-		col.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+		candidates = getCandidates(colors);
+		col.style.backgroundColor = candidates[Math.floor(Math.random()*candidates.length)];
+		for (let color of colors) {
+			if (col.style.backgroundColor == color.color) {
+				color.time += 1;
+				break ;
+			}
+		}
 	});
+}
+
+function getCandidates(list) {
+	var min = list[0].time;
+	var candidates = [];
+
+	for (let element of list) {
+		if (min > element.time)
+			min = element.time;
+	}
+	for (let element of list) {
+		if (min == element.time)
+			candidates.push(element.color);
+	}
+	return candidates;
 }
 
 function setFeatures() {
