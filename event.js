@@ -5,7 +5,7 @@ const features = Array(
 	{"feature":"上京してきました", "time": 0}, {"feature":"TIG 経験者", "time": 0}, {"feature":"Rush reviewer", "time": 0}, {"feature":"A.G.U 未使用", "time": 0}, {"feature":"自作 PC 持ってます", "time": 0});
 const colors = Array({"color": "rgb(196, 10, 10)", "time": 0}, {"color": "rgb(38, 70, 120)", "time": 0}, {"color": "rgb(222, 164, 4)", "time": 0}, {"color": "rgb(30, 120, 30)", "time": 0});
 // const colors = Array({"color": "red", "time": 0}, {"color": "blue", "time": 0}, {"color": "yellow", "time": 0}, {"color": "green", "time": 0});
-const imagePath = "images/hand_good.png";
+const imagePath = "images/42tokyo_square.png";
 
 function setColor() {
 	const forEach = Array.prototype.forEach;
@@ -77,7 +77,9 @@ function setFeatures() {
 
 function setFound() {
 	var target = event.target.parentNode.parentNode;
+	target.style.backgroundColor = "black";
 	target.style.backgroundImage = `url(${imagePath})`;
 	target.style.backgroundPosition = "center center";
 	target.style.backgroundRepeat = "no-repeat";
+	target.style.backgroundSize = "contain";
 }
