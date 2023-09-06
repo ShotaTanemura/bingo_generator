@@ -80,7 +80,7 @@ function resetCells() {
 	var cols = document.getElementsByClassName('col');
 
 	forEach.call(cols, function (col) {
-		col.style.backgroundImage = ``;
+		col.style.backgroundImage = '';
 	});
 }
 
