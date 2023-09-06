@@ -75,6 +75,15 @@ function setFeatures() {
 	});
 }
 
+function resetCells() {
+	const forEach = Array.prototype.forEach;
+	var cols = document.getElementsByClassName('col');
+
+	forEach.call(cols, function (col) {
+		col.style.backgroundImage = ``;
+	});
+}
+
 function setFound() {
 	var target = event.target.parentNode.parentNode;
 	target.style.backgroundColor = "black";
