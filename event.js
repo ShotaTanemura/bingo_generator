@@ -32,45 +32,49 @@ function setColor() {
 function getColorCandidates(list) {
 	var min = list[0].time;
 	var candidates = [];
-
+	
 	for (let element of list) {
 		if (min > element.time)
-			min = element.time;
+		min = element.time;
 	}
 	for (let element of list) {
 		if (min == element.time)
 			candidates.push(element.color);
+		}
+		return candidates;
 	}
-	return candidates;
-}
-
-function getFeatureCandidates(list) {
-	var min = list[0].time;
-	var candidates = [];
-
-	for (let element of list) {
-		if (min > element.time)
+	
+	function getFeatureCandidates(list) {
+		var min = list[0].time;
+		var candidates = [];
+		
+		for (let element of list) {
+			if (min > element.time)
 			min = element.time;
-	}
-	for (let element of list) {
-		if (min == element.time)
+		}
+		for (let element of list) {
+			if (min == element.time)
 			candidates.push(element.feature);
+		}
+		return candidates;
 	}
-	return candidates;
-}
-
-function setFeatures() {
-	const forEach = Array.prototype.forEach;
-	var cols = document.getElementsByClassName('col');
-
+	
+	function setFeatures() {
+		const forEach = Array.prototype.forEach;
+		var cols = document.getElementsByClassName('col');
+		
 	forEach.call(cols, function (col) {
-		candidates = getFeatureCandidates(features);
-		col.firstElementChild.textContent = candidates[Math.floor(Math.random()*candidates.length)];
-		for (let feature of features) {
-			if (col.firstElementChild.textContent == feature.feature) {
-				feature.time += 1;
-				break ;
+		if (col.getAttribute('id') != "center") {
+			candidates = getFeatureCandidates(features);
+			col.firstElementChild.textContent = candidates[Math.floor(Math.random()*candidates.length)];
+			for (let feature of features) {
+				if (col.firstElementChild.textContent == feature.feature) {
+					feature.time += 1;
+					break ;
+				}
 			}
+		} else {
+			col.firstElementChild.textContent = "staff";
 		}
 	});
 }
